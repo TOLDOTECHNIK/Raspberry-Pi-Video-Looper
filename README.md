@@ -12,8 +12,9 @@ By the way: Raspberry Pi Zero W boots up in 14 seconds!
 # Detailed description
 Most of the buildroot adaptions are stored in the `./board/tt_rpi/rootfs-overlay` folder. After creating the `sdcard.img` it's content is placed in the root `/` folder.
 
-Only one board configuration is available at the moment:
+There are two board configurations available at the moment:
 - `rpi0w_tt_defconfig` for RPi Zero (V1.3) and RPi Zero W (V1.1), both tested
+- `rpi4_tt_defconfig` for RPi 4, tested
 
 ## Custom settings
 Below you will find the explanations of how the customization is made on the final running Raspberry Pi image.  
