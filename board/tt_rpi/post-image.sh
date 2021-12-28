@@ -2,6 +2,8 @@
 
 CUSTOM_BOARD_DIR="$(dirname $0)"
 GENIMAGE_CFG=""
+START_FILE=""
+FIXUP_FILE=""
 GENIMAGE_TMP="${BUILD_DIR}/genimage.tmp"
 
 # Pass an empty rootpath. genimage makes a full copy of the given rootpath to
@@ -19,8 +21,16 @@ for arg in "$@"
 do
 	case "${arg}" in
 		--genimage0)
-			GENIMAGE_CFG="${CUSTOM_BOARD_DIR}/genimage0.cfg"
 			echo "Genimage set to genimage0.cfg"
+			GENIMAGE_CFG="${CUSTOM_BOARD_DIR}/genimage0.cfg"
+			START_FILE="start.elf"
+			FIXUP_FILE="fixup.dat"
+		;;
+		--genimage4)
+			echo "Genimage set to genimage4.cfg"
+			GENIMAGE_CFG="${CUSTOM_BOARD_DIR}/genimage4.cfg"
+			START_FILE="start4.elf"
+			FIXUP_FILE="fixup4.dat"
 		;;
 	esac
 done
@@ -32,18 +42,16 @@ __EOF__
 
 # Override config.txt
 cat << __EOF__ > "${BINARIES_DIR}/rpi-firmware/config.txt"
-start_file=start.elf
-fixup_file=fixup.dat
+start_file=${START_FILE}
+fixup_file=${FIXUP_FILE}
 kernel=zImage
-dtoverlay=miniuart-bt
 gpu_mem_256=128
 gpu_mem_512=196
 gpu_mem_1024=384
-dtoverlay=krnbt=on
-dtparam=audio=on
 boot_delay=0
 disable_splash=1
 enable_uart=1
+dtoverlay=miniuart-bt
 __EOF__
 
 # Create empty video.txt

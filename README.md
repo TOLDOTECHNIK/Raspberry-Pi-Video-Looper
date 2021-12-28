@@ -59,6 +59,7 @@ Please change it after first boot: `passwd root`
 ## Prebuilt images
 Prebuilt images are freely available from our server.
 - [Raspberry Pi Zero / Zero W](https://dev.toldotechnik.li/download/387860/) (2021-12-27)
+- [Raspberry Pi 4](https://dev.toldotechnik.li/download/387861/) (2021-12-28)
 - more to come...
 
 Image files can be written the same way as the official Raspberry Pi images. Please see https://www.raspberrypi.org/documentation/installation/installing-images/
@@ -95,6 +96,10 @@ Then add our custom board config
 Everything is ready now. You can load your board's configuration by typing
 
     make rpi0w_tt_defconfig
+
+or
+
+    make rpi4_tt_defconfig
 
 If you want to make your own changes, run this before compiling.
 
